@@ -1,0 +1,24 @@
+{
+  "name": "code-cast",
+  "version": "1.0.0",
+  "description": "A simple zero-configuration command-line to cast project source code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ben-barbier/code-cast.git"
+  },
+  "keywords": [
+    "cli",
+    "command",
+    "cast"
+  ],
+  "author": "Benjamin Barbier <benjamin.barbier.59@gmail.com> (https://symbol-it.fr/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ben-barbier/code-cast/issues"
+  },
+  "homepage": "https://github.com/ben-barbier/code-cast#readme"
+}
