@@ -2,7 +2,6 @@
   "name": "code-cast",
   "version": "1.0.0",
   "description": "A simple zero-configuration command-line to cast project source code.",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/ben-barbier/code-cast/issues"
   },
-  "homepage": "https://github.com/ben-barbier/code-cast#readme"
+  "homepage": "https://github.com/ben-barbier/code-cast#readme",
+  "preferGlobal": true,
+  "bin": {
+    "code-cast": "index.js"
+  }
 }
