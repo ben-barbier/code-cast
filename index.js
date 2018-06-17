@@ -6,6 +6,7 @@ const portfinder = require('portfinder');
 const dirTree = require('directory-tree');
 const {getInstalledPathSync} = require('get-installed-path');
 const colors = require('colors');
+const opener = require('opener');
 
 const root = getInstalledPathSync('code-cast');
 const argv = require('minimist')(process.argv.slice(2));
@@ -19,6 +20,7 @@ if (help) {
         '',
         'options:',
         '  -p --port    Port to use [3000]',
+        '  -o           Open browser window after starting the server',
         '',
         '  -h --help    Print this list and exit.'
     ].join('\n'));
@@ -32,6 +34,7 @@ function listen(path, port, root) {
 
     const tree = dirTree(path);
     displayStartingMessage(path, port);
+    openBrowserWindowIfActivated();
 
     server({port: port, views: `${root}/views`}, ctx => {
         return render('index.hbs', {tree: JSON.stringify(tree)});
@@ -44,6 +47,12 @@ function displayStartingMessage(path, port) {
     console.log(`Available on:`.yellow);
     console.log(`  http://127.0.0.1:${port}`);
     console.log(`Hit CTRL-C to stop the server`);
+}
+
+function openBrowserWindowIfActivated() {
+    if (argv['o']) {
+        opener('http://127.0.0.1:' + port);
+    }
 }
 
 process.on('SIGINT', exit);

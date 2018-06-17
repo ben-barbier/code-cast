@@ -29,6 +29,7 @@
     "directory-tree": "^2.1.0",
     "get-installed-path": "^4.0.8",
     "minimist": "^1.2.0",
+    "opener": "^1.4.3",
     "portfinder": "^1.0.13",
     "server": "^1.0.18"
   }
