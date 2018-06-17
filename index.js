@@ -11,6 +11,19 @@ const root = getInstalledPathSync('code-cast');
 const argv = require('minimist')(process.argv.slice(2));
 const path = argv['_'][0] || '.';
 const port = argv['p'] || argv['port'] || 3000;
+const help = argv['h'] || argv['help'] || false;
+
+if (help) {
+    console.log([
+        'usage: code-cast [path] [options]',
+        '',
+        'options:',
+        '  -p --port    Port to use [3000]',
+        '',
+        '  -h --help    Print this list and exit.'
+    ].join('\n'));
+    process.exit();
+}
 
 portfinder.basePort = port;
 portfinder.getPortPromise().then(freeport => listen(path, freeport, root));
