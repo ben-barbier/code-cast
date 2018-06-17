@@ -38,8 +38,8 @@ function listen(path, port, root) {
     displayStartingMessage(path, origins);
     openBrowserWindowIfActivated();
 
-    server({port: port, views: `${root}/views`, public: './views'}, ctx => {
-        return render('index.hbs', {tree: JSON.stringify(tree)});
+    server({port: port, views: `${root}/views`, public: root}, ctx => {
+        return render('index.hbs', {tree: JSON.stringify(tree), path});
     });
 
 }

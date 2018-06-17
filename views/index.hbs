@@ -1,16 +1,64 @@
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="views/style.css">
+    <link rel="stylesheet" href="node_modules/jstree/dist/themes/default/style.min.css"/>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/jstree/dist/jstree.min.js"></script>
     <script>
-        window.onload = function () {
+        $(function () {
+
             const tree = JSON.parse('{{tree}}'.replace(/&quot;/g, '"'));
 
-            // Only for demo
-            document.getElementById('tree').innerText = JSON.stringify(tree);
-        };
+            $('#tree').jstree(convertDirectoryTreeToJsTreeFormat(tree));
+
+            function convertDirectoryTreeToJsTreeFormat(tree) {
+
+                const jsTree = [];
+
+                tree.children.forEach(rootItem => {
+                    if (rootItem.type === 'file') {
+                        jsTree.push({text: rootItem.name, icon: 'jstree-file'});
+                    }
+                    if (rootItem.type === 'directory') {
+                        jsTree.push(convertDirectory(rootItem));
+                    }
+                });
+
+                function convertDirectory(dir) {
+                    const folder = {text: dir.name, children: []};
+                    dir.children.forEach(e => {
+                        if (e.type === 'file') {
+                            folder.children.push({text: e.name, icon: 'jstree-file'});
+                        }
+                        if (e.type === 'directory') {
+                            folder.children.push(convertDirectory(e));
+                        }
+                    });
+                    return folder;
+                }
+
+                return {
+                    core: {
+                        data: jsTree,
+                        multiple: false,
+                        themes: {
+                            stripes: false,
+                            dots: false,
+                        },
+                    }
+                };
+            }
+
+        });
     </script>
-    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<section id="tree"></section>
+<section id="toolbar">
+    <h1>code-cast : {{path}}</h1>
+</section>
+<section id="page">
+    <section id="tree"></section>
+    <section id="content">TODO: file content...</section>
+</section>
 </body>
 </html>
