@@ -23,5 +23,12 @@
   "preferGlobal": true,
   "bin": {
     "code-cast": "index.js"
+  },
+  "dependencies": {
+    "directory-tree": "^2.1.0",
+    "get-installed-path": "^4.0.8",
+    "minimist": "^1.2.0",
+    "portfinder": "^1.0.13",
+    "server": "^1.0.18"
   }
 }

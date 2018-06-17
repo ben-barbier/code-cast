@@ -1,0 +1,20 @@
+<html>
+<head>
+    <script>
+        window.onload = function () {
+            const tree = JSON.parse('{{tree}}'.replace(/&quot;/g, '"'));
+
+            // Only for demo
+            document.getElementById('tree').innerText = JSON.stringify(tree);
+        };
+    </script>
+    <style>
+        #tree {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+<section id="tree"></section>
+</body>
+</html>
