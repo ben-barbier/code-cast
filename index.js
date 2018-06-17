@@ -33,3 +33,19 @@ function displayStartingMessage(path, port) {
     console.log(`Hit CTRL-C to stop the server`);
 }
 
+process.on('SIGINT', exit);
+process.on('SIGTERM', exit);
+
+if (process.platform === 'win32') {
+    require('readline').createInterface({
+        input: process.stdin,
+        output: process.stdout
+    }).on('SIGINT', function () {
+        process.emit('SIGINT');
+    });
+}
+
+function exit() {
+    console.log('\r\ncode-cast stopped.'.red);
+    process.exit();
+}
