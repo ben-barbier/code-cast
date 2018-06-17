@@ -15,7 +15,7 @@
     "cast"
   ],
   "author": "Benjamin Barbier <benjamin.barbier.59@gmail.com> (https://symbol-it.fr/)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ben-barbier/code-cast/issues"
   },
